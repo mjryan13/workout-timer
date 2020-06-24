@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" href="style-screen.css" type="text/css" media="screen"> -->
+    <!-- <link rel="stylesheet" href="style-print.css" type="text/css" media="print"> -->
+   
+
+    <title>Workout Timer</title>
+
+</head>
+
+
+<body>
+    <!-- <h1 class="title">Workout Timer</h1> -->
+
+    <div class="input">
+        <div class=time_input>
+        <input type="text" inputmode="decimal" id="time" placeholder="Seconds"  />
+        </div>
+    </div>
+
+    <div class="button">
+        <button id="startButton" onclick="startFunction(); return false">START</button>
+    </div>
+
+    <!-- <h1 id="timer" class="title">30</h1> -->
+
+
+
+
+</body>
+</html>
+
+<!-- CSS -->
+
+
+<style>
+
+* {
+	outline: none;
+}
+
+body {
+    background-color: black;
+}
+
+.title {
+    text-align: center;
+}
+.button {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    margin-bottom: auto;
+
+}
+#startButton{
+    width:500px;
+    height:500px; 
+    border-radius: 100%;
+    border:white 3px solid;
+    box-shadow: 0 2px 4px 2px white;
+    font-size: 100px;
+    color: white;
+    background-color: blue;
+
+}
+
+.input {
+    display: flex;
+    justify-content: center;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    border-radius: 5px;
+}
+.input input {
+    height: 20px;
+    width: 150px;
+    font-weight: bold;
+    padding: 10px;
+    font-size: 30px;
+}
+.time_input {
+    padding: 50px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+#noShow {
+    display: none;
+}
+
+@media only screen and (max-width: 425px) {
+
+
+
+    #startButton {
+        width: 290px;
+        height: 290px;
+        font-size: 70px;
+        border:white 2px solid;
+        box-shadow: none;
+        margin-top: 20%;
+        margin-bottom: auto;
+    }
+
+    .button {
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+    margin-bottom: 5%;
+    }
+
+    .input {
+        margin-top: 13%;
+        margin-bottom: 4%;
+        border-radius: 5px;
+    }
+    .input input {
+        padding: 0px;
+        height: 40px;
+    }
+
+    .time_input {
+        padding: 20px;
+
+    }
+
+}
+
+</style>
+
+
+<!-- Javascript Code -->
+
+<script>
+
+
+function startFunction() {
+
+    var newTime = document.getElementById("time");
+    if (isNaN(newTime.value) || newTime.value <= "0") {
+        document.getElementById("startButton").innerHTML = "Enter Time"
+        return;
+    } else {
+    
+    var count = parseFloat(newTime.value);
+    }
+
+    var seconds = setInterval(timer, 1000);
+
+    function timer() {
+        document.getElementById("startButton").style.backgroundColor = "#0000FF";
+        document.getElementById("startButton").innerHTML = "START"
+
+
+        count=count-1; 
+
+        document.getElementById("startButton").innerHTML = count;
+
+        
+        if (count <= 0) {
+            clearInterval(seconds);
+           
+            document.getElementById("startButton").style.backgroundColor = "#FF0000";
+            document.getElementById("startButton").innerHTML = "DONE!"
+            return;
+        } 
+        // document.getElementById("timer").innerHTML = count;
+
+    }
+
+   
+
+
+}
+
+
+
+
+</script>
